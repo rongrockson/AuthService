@@ -67,7 +67,7 @@ class AuthController {
             });
 
             // Redirect to frontend without userData to avoid URL issues
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+            const frontendUrl = process.env.FRONTEND_URL;
             const redirectUrl = `${frontendUrl}/dashboard`;
 
             console.log('Redirecting to:', redirectUrl);
