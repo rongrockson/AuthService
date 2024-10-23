@@ -13,7 +13,7 @@ import logger from './utils/logger.js';
 import { configurePassport } from './config/passport.js';
 import config from './config/config.js';
 import cookieParser from 'cookie-parser';
-import connectDB from './config/config.js'; // Import the connectDB function
+import connectDB from './config/db.js'; // Import the connectDB function
 
 const app = express();
 
