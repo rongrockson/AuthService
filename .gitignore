@@ -1,0 +1,4 @@
+# add .env file, node_modules and vercel.json file to gitignore
+.env
+vercel.json
+node_modules
