@@ -1,22 +1,25 @@
+// config/db.js
 import mongoose from 'mongoose';
 import logger from '../utils/logger.js';
 
-/**
- * Establishes a connection to MongoDB using the URI from environment variables.
- * Logs connection status.
- * 
- * @param {string} mongoURI - MongoDB connection string
- */
+let isConnected = false;
+
 const connectDB = async (mongoURI) => {
+    if (isConnected) {
+        logger.info('Already connected to MongoDB.');
+        return;
+    }
+
     try {
         await mongoose.connect(mongoURI, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
         });
+        isConnected = true;
         logger.info('MongoDB connected successfully.');
     } catch (error) {
-        logger.error('MongoDB connection error:', error);
-        process.exit(1);  // Terminate the process on failure
+        logger.error('MongoDB connection error: ' + error);
+        process.exit(1);
     }
 };
 

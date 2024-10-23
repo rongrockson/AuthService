@@ -2,6 +2,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import config from './config.js';
 
 export const configurePassport = (passport, authService) => {
+    console.log('Configuring passport witn url:', `${config.backendURL}/auth/google/callback`);
     passport.use(new GoogleStrategy({
         clientID: config.googleClientID,
         clientSecret: config.googleClientSecret,

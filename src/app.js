@@ -13,6 +13,8 @@ import logger from './utils/logger.js';
 import { configurePassport } from './config/passport.js';
 import config from './config/config.js';
 import cookieParser from 'cookie-parser';
+import connectDB from './config/config.js'; // Import the connectDB function
+
 const app = express();
 
 app.use(cors({
@@ -22,10 +24,7 @@ app.use(cors({
 app.use(cookieParser());
 
 app.use(express.json());
-
-mongoose.connect(config.mongoURI)
-    .then(() => logger.info('Connected to MongoDB'))
-    .catch((err) => logger.error('MongoDB connection error:', err));
+connectDB(config.mongoURI);
 
 const authRepository = new AuthRepository(User);
 const authService = new AuthService(authRepository);
