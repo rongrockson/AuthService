@@ -5,7 +5,7 @@ export const configurePassport = (passport, authService) => {
     passport.use(new GoogleStrategy({
         clientID: config.googleClientID,
         clientSecret: config.googleClientSecret,
-        callbackURL: "http://localhost:5000/auth/google/callback",  // Full URL is necessary
+        callbackURL: `${config.backendURL}/auth/google/callback`,  // Full URL is necessary
         scope: ['profile', 'email']  // Required scopes
     }, (accessToken, refreshToken, profile, done) => {
         // The profile object contains the user's Google profile information

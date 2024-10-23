@@ -11,6 +11,7 @@ const config = {
     frontendURL: process.env.FRONTEND_URL,
     notifyServiceURL: process.env.NOTIFY_SERVICE_URL,
     env: process.env.NODE_ENV,
+    backendURL: process.env.BACKEND_URL,
 };
 
 export default config;
