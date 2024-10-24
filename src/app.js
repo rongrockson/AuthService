@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import passport from 'passport';
-
+import dotenv from 'dotenv';
 import User from './models/User.js';
 import AuthRepository from './repositories/authRepository.js';
 import AuthService from './services/authService.js';
@@ -14,13 +14,16 @@ import { configurePassport } from './config/passport.js';
 import config from './config/config.js';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js'; // Import the connectDB function
+dotenv.config();
+
 
 const app = express();
 
 app.use(cors({
-    origin: config.frontendURL,  // Allow your frontend origin
-    credentials: true,  // Enable credentials (cookies, authorization headers)
+    origin: config.frontendURL,
+    credentials: true,
 }));
+
 app.use(cookieParser());
 
 app.use(express.json());

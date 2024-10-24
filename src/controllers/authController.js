@@ -66,8 +66,7 @@ class AuthController {
                 path: '/',
             });
 
-            // Redirect to frontend without userData to avoid URL issues
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = config.frontendURL
             const redirectUrl = `${frontendUrl}/dashboard`;
 
             console.log('Redirecting to:', redirectUrl);
@@ -111,6 +110,7 @@ class AuthController {
 
         try {
             const dbUser = await this.authService.setUserRole(user.id, role);
+            console.log('User role updated:' + dbUser);
             res.status(200).json({ user: dbUser });
         } catch (error) {
             logger.error('Set role error:' + error);

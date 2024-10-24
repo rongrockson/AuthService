@@ -7,6 +7,7 @@ export const authenticateToken = (req, res, next) => {
     const token = req.cookies.token;
 
     if (!token) {
+        console.log('No token found');
         return next(new AppError('Authentication required', 401));
     }
 
@@ -15,6 +16,7 @@ export const authenticateToken = (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
+        console.log('Token error:' + error);
         next(new AppError('Invalid token', 401));
     }
 };
